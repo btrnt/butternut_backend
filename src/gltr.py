@@ -2,8 +2,28 @@ import numpy as np
 import torch
 from transformers import GPT2Tokenizer, GPT2LMHeadMode
 
-tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
-model = GPT2LMHeadModel.from_pretrained('gpt2', return_dict=True)
+"""
+Usage:
+Args:
+    raw_text: String to check
+    topk: 1
+gltr = LM()
+payload = gltr.check_probabilities(raw_text)
+probabilities = payload['real_topk'] # [tuple(probablity_rank, prob_%)]
+                                    # generally for rank:
+                                    # 0-10 is very normal
+                                    # 10-100 is somewhat not normal
+                                    # 100-1000 is v not normal
+                                    # 1000+ is vv not normal
+                            human-ness increases with increasing |rank|
+"""
+
+
+
+
+
+
+
 
 
 class AbstractLanguageChecker():
@@ -73,7 +93,7 @@ class LM(AbstractLanguageChecker):
         self.start_token = '<|endoftext|>'
         print("Loaded GPT-2 model!")
 
-    def check_probabilities(self, in_text, topk=40):
+    def check_probabilities(self, in_text, topk=1):
         # Process input
         start_t = torch.full((1, 1),
                              self.enc.encoder[self.start_token],
