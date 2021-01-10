@@ -104,7 +104,7 @@ class LM(AbstractLanguageChecker):
         context = self.enc.encode(in_text)
         context = torch.tensor(context,
                                device=self.device,
-                               type=torch.long).unsqueeze(0)
+                               dtype=torch.long).unsqueeze(0)
         context = torch.cat([start_t, context], dim=1)
         # Forward through the model
         logits = self.model(context)[0]
