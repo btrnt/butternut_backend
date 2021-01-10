@@ -1,6 +1,6 @@
 import numpy as np
 import torch
-from transformers import GPT2Tokenizer, GPT2LMHeadMode
+from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
 """
 Usage:
@@ -9,6 +9,8 @@ Args:
     topk: 1
 gltr = LM()
 payload = gltr.check_probabilities(raw_text)
+
+tokens = payload['bpe_strings'] # list of tokens from sentence
 probabilities = payload['real_topk'] # [tuple(probablity_rank, prob_%)]
                                     # generally for rank:
                                     # 0-10 is very normal
