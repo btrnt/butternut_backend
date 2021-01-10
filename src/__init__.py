@@ -1,1 +1,1 @@
-from gltr import *
+from .gltr import *
