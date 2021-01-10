@@ -114,6 +114,7 @@ class LM(AbstractLanguageChecker):
         y = context[0, 1:]
         # Sort the predictions for each timestep
         sorted_preds = np.argsort(-yhat.data.cpu().numpy())
+        print("len!", len(sorted_preds))
         # [(pos, prob), ...]
         real_topk_pos = list(
             [int(np.where(sorted_preds[i] == y[i].item())[0][0])
