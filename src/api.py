@@ -2,11 +2,16 @@
 
 """
 
-
 from flask import Flask, request, jsonify
-from .gltr import LM
+from toml import load
 
-gltr_mdl = LM()
+if load('config.toml') == 'CTRL':
+    from .ctrl_gltr import CTRL_LM
+    gltr_mdl = CTRL_LM()
+else:
+    from .gltr import LM
+    gltr_mdl = LM()
+
 
 app = Flask(__name__)
 
