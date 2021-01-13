@@ -30,6 +30,10 @@ tokens = payload['bpe_strings']
 probabilities = payload['real_topk']
 ```
 
+Desired backend can be specified in src/config.toml
+Currently only CTRL & gpt-2 backends are supported.
+
+
 
 
 
